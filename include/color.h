@@ -1,5 +1,5 @@
-#ifndef AXIS_COLOR_H
-#define AXIS_COLOR_H
+#ifndef LIBAXIS_COLOR_H
+#define LIBAXIS_COLOR_H
 
 typedef union rgba32_color {
     struct {
@@ -12,4 +12,4 @@ typedef struct hsvf_color {
     float h, s, v;
 } Color_HSVf;
 
-#endif /* AXIS_COLOR_H */
+#endif /* LIBAXIS_COLOR_H */

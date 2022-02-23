@@ -5,9 +5,7 @@
  * @brief A colorful library.
 **/
 
-#include <math.h>
-#include "macros.h"
-#include "color.h"
+#include "libaxis.h"
 
 /**
 * @brief Convert RGB color space to HSV
@@ -34,8 +32,8 @@ void LibAxis_Color_RGBToHSV(unsigned char r, unsigned char g, unsigned char b, f
     _g = (g / 255.0f);
     _b = (b / 255.0f);
 
-    cmax = MAX3(_r, _g, _b);
-    cmin = MIN3(_r, _g, _b);
+    cmax = LibAxis_MaxF3(_r, _g, _b);
+    cmin = LibAxis_MinF3(_r, _g, _b);
     delta = (cmax - cmin);
 
     if (cmax == 0.0f) {
@@ -46,7 +44,7 @@ void LibAxis_Color_RGBToHSV(unsigned char r, unsigned char g, unsigned char b, f
         *s = (delta / cmax);
 
         if (cmax == _r) {
-            *h = (60 * MODF(((_g - _b)), 6));
+            *h = (60 * LibAxis_ModF(((_g - _b)), 6));
         } else if (cmax == _g) {
             *h = (60 * (((_b - _r) / delta) + 2));
         } else {
@@ -81,7 +79,7 @@ void LibAxis_Color_HSVToRGB(float h, float s, float v, unsigned char* r, unsigne
     v = (v < 0.0f) ? 0.0f : (v > 1.0f) ? 1.0f : v;
 
     c = (v * s);
-    x = c * (1.0f - ABS(MODF((h / 60.0f), 2.0f) - 1.0f));
+    x = c * (1.0f - LA_ABS(LibAxis_ModF((h / 60.0f), 2.0f) - 1.0f));
     m = (v - c);
 
     if (h >= 0.0f && h < 60.0f) {
@@ -147,9 +145,9 @@ Color_RGBA32 LibAxis_Color_LerpRBA32Percent(unsigned int rgba1, unsigned int rgb
     a.rgba = rgba1;
     b.rgba = rgba2;
 
-    return_value.r = TWEEN_PERCENT(a.r, b.r, percent);
-    return_value.g = TWEEN_PERCENT(a.g, b.g, percent);
-    return_value.b = TWEEN_PERCENT(a.b, b.b, percent);
+    return_value.r = LA_TWEEN_PERCENT(a.r, b.r, percent);
+    return_value.g = LA_TWEEN_PERCENT(a.g, b.g, percent);
+    return_value.b = LA_TWEEN_PERCENT(a.b, b.b, percent);
     return_value.a = 255;
 
     return return_value;
