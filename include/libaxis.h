@@ -1,14 +1,18 @@
 #ifndef LIBAXIS_H
 #define LIBAXIS_H
 
-#ifdef __X64
-#include <math.h>
-#else
+#ifdef __LA_STANDALONE__
+
+#ifdef MIPS
 extern float cosf(float x);
 extern float sinf(float x);
 extern float sqrtf(float x);
 extern double __pow(double x, double y);
 #define acosf(x) (float)__pow(cosf((float)(x)), -1.0f)
+#else
+#include <math.h>
+#endif
+
 #endif
 
 #include "macros.h"

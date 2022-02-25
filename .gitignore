@@ -1,5 +1,5 @@
 /.vscode
 /build
+/dist
 build.sh
-include/ultralib
 libaxis.zip

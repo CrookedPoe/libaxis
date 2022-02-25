@@ -9,6 +9,7 @@ typedef struct {
     int x, y;
 } Vec2i;
 
+#ifdef __LA_STANDALONE__
 typedef struct {
     float x, y;
 } Vec2f;
@@ -24,6 +25,7 @@ typedef struct {
 typedef struct {
     float x, y, z;
 } Vec3f;
+#endif
 
 typedef struct {
     short x, y, z, w;

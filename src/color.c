@@ -23,10 +23,10 @@ void LibAxis_Color_RGBToHSV(unsigned char r, unsigned char g, unsigned char b, f
     float _r, _g, _b;
     float cmax, cmin, delta;
 
-    // Clamp
-    r = (r < 0) ? 0 : (r > 255) ? 255 : r;
-    g = (g < 0) ? 0 : (g > 255) ? 255 : g;
-    b = (b < 0) ? 0 : (b > 255) ? 255 : b;
+    // Clamp (limited by data type)
+    //r = (r > 255) ? 255 : r;
+    //g = (g > 255) ? 255 : g;
+    //b = (b > 255) ? 255 : b;
 
     _r = (r / 255.0f);
     _g = (g / 255.0f);
@@ -71,7 +71,7 @@ void LibAxis_Color_RGBToHSV(unsigned char r, unsigned char g, unsigned char b, f
 **/
 void LibAxis_Color_HSVToRGB(float h, float s, float v, unsigned char* r, unsigned char* g, unsigned char* b) {
     float c, x, m;
-    float rgb[3];
+    float rgb[3] = {0.0f, 0.0f, 0.0f};
 
     // Clamp
     h = (h < 0.0f) ? 0.0f : (h >= 360.0f) ? 359.0f : h;
