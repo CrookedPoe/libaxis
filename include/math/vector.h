@@ -133,14 +133,14 @@ static const Vec4s Vec4s_Backward = VECS_NEW(0, 0, -1, 0);
 static const Vec4s Vec4s_Ndentity = VECS_NEW(0, 0, 0, -1);
 static const Vec4s Vec4s_Zero     = VECS_NEW(0, 0, 0, 0);
 
-#define QuatF_Xhat      Vec4f_Right
-#define QuatF_Yhat      Vec4f_Up
-#define QuatF_Zhat      Vec4f_Forward
-#define QuatF_Identity  Vec4f_Identity
-#define QuatF_Xnhat     Vec4f_Left
-#define QuatF_Ynhat     Vec4f_Down
-#define QuatF_Znhat     Vec4f_Backward
-#define QuatF_Ndentity  Vec4f_Ndentity
+#define QuatF_Xhat                      Vec4f_Right
+#define QuatF_Yhat                      Vec4f_Up
+#define QuatF_Zhat                      Vec4f_Forward
+#define QuatF_Identity                  Vec4f_Identity
+#define QuatF_Xnhat                     Vec4f_Left
+#define QuatF_Ynhat                     Vec4f_Down
+#define QuatF_Znhat                     Vec4f_Backward
+#define QuatF_Ndentity                  Vec4f_Ndentity
 #define QuatF_AddAssignment             Vec4f_AddAssignment
 #define QuatF_SubAssignment             Vec4f_SubAssignment
 #define QuatF_MultiplyAssignment        Vec4f_MultiplyAssignment

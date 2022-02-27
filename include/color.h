@@ -15,8 +15,9 @@
     | (((CARG0) & 0x00000080) >>  7) /* alpha */  \
 )
 
+#define COLOR32(r, g, b, a) (uint32_t)(((r) << 24) | ((g) << 16) | ((b) << 8) | (a))
+#define COLOR24(r, g, b) (uint32_t)((r << 16) | (g << 8) | b)
 #define COLOR16(r, g, b, a) COLOR32_TO_COLOR16(COLOR32((r), (g), (b), (a)))
-#define COLOR24(r, g, b) COLOR32_TO_COLOR16(COLOR32(0, (r), (g), (b)))
 #define C16TO32(CARG0) COLOR16_TO_COLOR32((CARG0))
 #define C32TO16(CARG0) COLOR32_TO_COLOR16((CARG0))
 
@@ -49,7 +50,6 @@ typedef union rgba32_color {
 typedef struct rgbaf_color {
     float r, g, b, a;
 } Color_RGBAf;
-
 #endif
 
 typedef struct hsvf_color {

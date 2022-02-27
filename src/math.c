@@ -30,16 +30,6 @@ float LibAxis_MaxF3(float a, float b, float c) {
 }
 
 /**
-* @brief Modulous of two floats (x % y).
-* @param x
-* @param y
-* @return float 
-**/
-float LibAxis_ModF(float x, float y) {
-    return (y == 0.0f) ? 0.0f : (x - (x / y) * y);
-}
-
-/**
 * @brief Raise base to the power of exp
 * 
 * @param base 

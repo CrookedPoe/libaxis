@@ -7,26 +7,21 @@
 
 #include "libaxis.h"
 
+
 /**
-* @brief Convert RGB color space to HSV
-* 
+* @brief Convert RGB color space to HSV. This is primarily based off of the math found on RapidTables.
 * @param r Red Channel (0 - 255)
 * @param g Green Channel (0 - 255)
 * @param b Blue Channel (0 - 255)
 * @param h Hue (Pointer)
 * @param s Saturation (Pointer)
 * @param b Value (Pointer)
-* @return void 
+* @return void
 **/
 void LibAxis_Color_RGBToHSV(uint8_t r, uint8_t g, uint8_t b, float* h, float* s, float* v)
 {
     float _r, _g, _b;
     float cmax, cmin, delta;
-
-    // Clamp (limited by data type)
-    //r = (r > 255) ? 255 : r;
-    //g = (g > 255) ? 255 : g;
-    //b = (b > 255) ? 255 : b;
 
     _r = (r / 255.0f);
     _g = (g / 255.0f);
@@ -44,7 +39,7 @@ void LibAxis_Color_RGBToHSV(uint8_t r, uint8_t g, uint8_t b, float* h, float* s,
         *s = (delta / cmax);
 
         if (cmax == _r) {
-            *h = (60 * LibAxis_ModF(((_g - _b)), 6));
+            *h = (60 * fmodf(((_g - _b)), 6));
         } else if (cmax == _g) {
             *h = (60 * (((_b - _r) / delta) + 2));
         } else {
@@ -67,33 +62,34 @@ void LibAxis_Color_RGBToHSV(uint8_t r, uint8_t g, uint8_t b, float* h, float* s,
 * @param r Red Channel (Pointer)
 * @param g Green Channel (Pointer)
 * @param b Blue Channel (Pointer)
-* @return void 
+* @return void
+* @remark Slighty Lossy
 **/
 void LibAxis_Color_HSVToRGB(float h, float s, float v, uint8_t* r, uint8_t* g, uint8_t* b) {
     float c, x, m;
     float rgb[3] = {0.0f, 0.0f, 0.0f};
 
     // Clamp
-    h = (h < 0.0f) ? 0.0f : (h >= 360.0f) ? 359.0f : h;
-    s = (s < 0.0f) ? 0.0f : (s > 1.0f) ? 1.0f : s;
-    v = (v < 0.0f) ? 0.0f : (v > 1.0f) ? 1.0f : v;
+    h = LA_CLAMP(h, 0, 360);
+    s = LA_CLAMP01(s);
+    v = LA_CLAMP01(v);
 
     c = (v * s);
-    x = c * (1.0f - LA_ABS(LibAxis_ModF((h / 60.0f), 2.0f) - 1.0f));
+    x = c * (1.0f - fabsf(fmodf(h / 60.0f, 2) - 1.0f));
     m = (v - c);
 
-    if (h >= 0.0f && h < 60.0f) {
-        rgb[0] = c; rgb[1] = x; rgb[2] = 0;
-    } else if (h >= 60.0f && h < 120.0f) {
-        rgb[0] = x; rgb[1] = c; rgb[2] = 0;
-    } else if (h >= 120.0f && h < 180.0f) {
-        rgb[0] = 0; rgb[1] = c; rgb[2] = x;
-    } else if (h >= 180.0f && h < 240.0f) {
-        rgb[0] = 0; rgb[1] = x; rgb[2] = c;
-    } else if (h >= 240.0f && h < 300.0f) {
-        rgb[0] = x; rgb[1] = 0; rgb[2] = c;
-    } else if (h >= 300.0f && h < 360.0f) {
-        rgb[0] = c; rgb[1] = 0; rgb[2] = x;
+    if (LA_RANGE_HIE(h, 0, 60)) {
+        rgb[0] = c; rgb[1] = x; rgb[2] = 0.0f;
+    } else if (LA_RANGE_HIE(h, 60, 120)) {
+        rgb[0] = x; rgb[1] = c; rgb[2] = 0.0f;
+    } else if (LA_RANGE_HIE(h, 120, 180)) {
+        rgb[0] = 0.0f; rgb[1] = c; rgb[2] = x;
+    } else if (LA_RANGE_HIE(h, 180, 240)) {
+        rgb[0] = 0.0f; rgb[1] = x; rgb[2] = c;
+    } else if (LA_RANGE_HIE(h, 240, 300)) {
+        rgb[0] = x; rgb[1] = 0.0f; rgb[2] = c;
+    } else if (LA_RANGE_HIE(h, 300, 360)) {
+        rgb[0] = c; rgb[1] = 0.0f; rgb[2] = x;
     }
 
     *r = ((rgb[0] + m) * 255);
