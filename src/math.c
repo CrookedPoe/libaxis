@@ -5,7 +5,7 @@
  * @brief A math library.
 **/
 
-#include "libaxis.h"
+#include "../include/libaxis.h"
 
 /**
 * @brief Determine the smallest value from a set of 3.

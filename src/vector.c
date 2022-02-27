@@ -7,7 +7,7 @@
  * @brief A thicc vector library.
 **/
 
-#include "libaxis.h"
+#include "../include/libaxis.h"
 
 /**
 * @brief Adds theVec2f rhs to the Vec2f lhs and stores the result in lhs.

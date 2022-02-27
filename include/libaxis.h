@@ -2,7 +2,6 @@
 #define LIBAXIS_H
 
 #ifdef __LA_STANDALONE__
-#include "inttypes.h"
 #ifdef MIPS
 #define cosf __builtin_cosf
 #define sinf __builtin_sinf
@@ -16,6 +15,7 @@
 #endif
 #endif
 
+#include "lainttypes.h"
 #include "macros.h"
 #include "math/lamath.h"
 #include "color.h"
