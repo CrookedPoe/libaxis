@@ -39,7 +39,7 @@ void LibAxis_Color_RGBToHSV(uint8_t r, uint8_t g, uint8_t b, float* h, float* s,
         *s = (delta / cmax);
 
         if (cmax == _r) {
-            *h = (60 * fmodf(((_g - _b)), 6));
+            *h = (60 * LibAxis_ModF(((_g - _b)), 6));
         } else if (cmax == _g) {
             *h = (60 * (((_b - _r) / delta) + 2));
         } else {
@@ -75,7 +75,7 @@ void LibAxis_Color_HSVToRGB(float h, float s, float v, uint8_t* r, uint8_t* g, u
     v = LA_CLAMP01(v);
 
     c = (v * s);
-    x = c * (1.0f - fabsf(fmodf(h / 60.0f, 2) - 1.0f));
+    x = c * (1.0f - fabsf(LibAxis_ModF(h / 60.0f, 2) - 1.0f));
     m = (v - c);
 
     if (LA_RANGE_HIE(h, 0, 60)) {

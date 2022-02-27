@@ -23,6 +23,7 @@
 /* math.c */
 extern float LibAxis_MinF3(float a, float b, float c);
 extern float LibAxis_MaxF3(float a, float b, float c);
+extern float LibAxis_ModF(float x, float y);
 extern int32_t LibAxis_PowI(int32_t base, int32_t exp);
 
 /* color.c */
