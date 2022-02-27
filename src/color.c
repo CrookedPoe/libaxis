@@ -18,7 +18,7 @@
 * @param b Value (Pointer)
 * @return void 
 **/
-void LibAxis_Color_RGBToHSV(unsigned char r, unsigned char g, unsigned char b, float* h, float* s, float* v)
+void LibAxis_Color_RGBToHSV(uint8_t r, uint8_t g, uint8_t b, float* h, float* s, float* v)
 {
     float _r, _g, _b;
     float cmax, cmin, delta;
@@ -69,7 +69,7 @@ void LibAxis_Color_RGBToHSV(unsigned char r, unsigned char g, unsigned char b, f
 * @param b Blue Channel (Pointer)
 * @return void 
 **/
-void LibAxis_Color_HSVToRGB(float h, float s, float v, unsigned char* r, unsigned char* g, unsigned char* b) {
+void LibAxis_Color_HSVToRGB(float h, float s, float v, uint8_t* r, uint8_t* g, uint8_t* b) {
     float c, x, m;
     float rgb[3] = {0.0f, 0.0f, 0.0f};
 
@@ -140,7 +140,7 @@ void LibAxis_Color_LerpCosine(float* value, float timer, float min) {
 * @param percent The percent (0.0f to 1.0f for 0% to 100%, respectively) of transition from the first to second color.
 * @return Color_RGBA32 
 **/
-Color_RGBA32 LibAxis_Color_LerpRBA32Percent(unsigned int rgba1, unsigned int rgba2, float percent) {
+Color_RGBA32 LibAxis_Color_LerpRBA32Percent(uint32_t rgba1, uint32_t rgba2, float percent) {
     Color_RGBA32 a, b, return_value;
     a.rgba = rgba1;
     b.rgba = rgba2;

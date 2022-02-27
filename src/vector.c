@@ -339,19 +339,19 @@ void Vec2i_DivideAssignment(Vec2i* lhs, Vec2i* rhs) {
 }
 
 /**
-* @brief Scales the Vec2i lhs to the int rhs and stores the result in lhs;
-* (Vec2i)lhs *= (int)rhs;
+* @brief Scales the Vec2i lhs to the int32_t rhs and stores the result in lhs;
+* (Vec2i)lhs *= (int32_t)rhs;
 **/
-void Vec2i_MultiplyAssignmentF(Vec2i* lhs, int rhs) {
+void Vec2i_MultiplyAssignmentF(Vec2i* lhs, int32_t rhs) {
     lhs->x *= rhs;
     lhs->y *= rhs;
 }
 
 /**
-* @brief Divides the Vec2i lhs by the int rhs and stores the result in lhs;
-* (Vec2i)lhs *= (int)rhs;
+* @brief Divides the Vec2i lhs by the int32_t rhs and stores the result in lhs;
+* (Vec2i)lhs *= (int32_t)rhs;
 **/
-void Vec2i_DivideAssignmentF(Vec2i* lhs, int rhs) {
+void Vec2i_DivideAssignmentF(Vec2i* lhs, int32_t rhs) {
     lhs->x /= rhs;
     lhs->y /= rhs;
 }
@@ -393,60 +393,60 @@ Vec2i Vec2i_Divide(Vec2i lhs, Vec2i rhs) {
 }
 
 /**
-* @brief Returns the product of the Vec2i lhs scaled to the int rhs as a Vec2i.
-* v = ((Vec2i)lhs *= (int)rhs);
+* @brief Returns the product of the Vec2i lhs scaled to the int32_t rhs as a Vec2i.
+* v = ((Vec2i)lhs *= (int32_t)rhs);
 **/
-Vec2i Vec2i_MultiplyF(Vec2i lhs, int rhs) {
+Vec2i Vec2i_MultiplyF(Vec2i lhs, int32_t rhs) {
     Vec2i_MultiplyAssignmentF(&lhs, rhs);
     return lhs;
 }
 
 /**
-* @brief Returns the quotient of the Vec2i lhs divided by the int rhs as a Vec2i.
-* v = ((Vec2i)lhs *= (int)rhs);
+* @brief Returns the quotient of the Vec2i lhs divided by the int32_t rhs as a Vec2i.
+* v = ((Vec2i)lhs *= (int32_t)rhs);
 **/
-Vec2i Vec2i_DivideF(Vec2i lhs, int rhs) {
+Vec2i Vec2i_DivideF(Vec2i lhs, int32_t rhs) {
     Vec2i_DivideAssignmentF(&lhs, rhs);
     return lhs;
 }
 
 /**
-* @brief Returns the dot product of the Vec2i lhs and the Vec2i rhs as a int.
+* @brief Returns the dot product of the Vec2i lhs and the Vec2i rhs as a int32_t.
 * v = ((Vec2i)lhs • (Vec2i)rhs);
 **/
-int Vec2i_Dot(Vec2i* lhs, Vec2i* rhs) {
+int32_t Vec2i_Dot(Vec2i* lhs, Vec2i* rhs) {
     return (lhs->x * rhs->x) + (lhs->y * rhs->y);
 }
 
 /**
-* @brief Returns the square magnitude of the Vec2i lhs as a int.
+* @brief Returns the square magnitude of the Vec2i lhs as a int32_t.
 * v = ((Vec2i)lhs^2)
 **/
-int Vec2i_SquareMagnitude(Vec2i lhs) {
+int32_t Vec2i_SquareMagnitude(Vec2i lhs) {
     return (lhs.x * lhs.x) + (lhs.y * lhs.y);
 }
 
 /**
-* @brief Returns the magnitude of the Vec2i lhs as a int.
+* @brief Returns the magnitude of the Vec2i lhs as a int32_t.
 * v = √((Vec2i)lhs^2)
 **/
-int Vec2i_Magnitude(Vec2i lhs) {
+int32_t Vec2i_Magnitude(Vec2i lhs) {
     return sqrtf(Vec2i_SquareMagnitude(lhs));
 }
 
 /**
-* @brief Returns the square magnitude of the Vec2i lhs as a int.
+* @brief Returns the square magnitude of the Vec2i lhs as a int32_t.
 * v = ((Vec2i)lhs^2)
 **/
-int Vec2i_SquareMagnitudePtr(Vec2i* lhs) {
+int32_t Vec2i_SquareMagnitudePtr(Vec2i* lhs) {
     return (lhs->x * lhs->x) + (lhs->y * lhs->y);
 }
 
 /**
-* @brief Returns the magnitude of the Vec2i lhs as a int.
+* @brief Returns the magnitude of the Vec2i lhs as a int32_t.
 * v = √((Vec2i)lhs^2)
 **/
-int Vec2i_MagnitudePtr(Vec2i* lhs) {
+int32_t Vec2i_MagnitudePtr(Vec2i* lhs) {
     return sqrtf(Vec2i_SquareMagnitudePtr(lhs));
 }
 
@@ -454,7 +454,7 @@ int Vec2i_MagnitudePtr(Vec2i* lhs) {
 * @brief Normalizes the Vec2i lhs into a unit vector.
 **/
 void Vec2i_NormalizeAssignment(Vec2i* lhs) {
-    int magnitude = Vec2i_MagnitudePtr(lhs);
+    int32_t magnitude = Vec2i_MagnitudePtr(lhs);
     if (magnitude == 0) {
         lhs->x = 0;
         lhs->y = 0;
@@ -474,9 +474,9 @@ Vec2i Vec2i_Normalize(Vec2i lhs) {
 }
 
 /**
-* @brief Returns the difference of the magnitudes of the Vec2i lhs subtracted from the Vec2i rhs as a int.
+* @brief Returns the difference of the magnitudes of the Vec2i lhs subtracted from the Vec2i rhs as a int32_t.
 **/
-int Vec2i_Distance(Vec2i lhs, Vec2i rhs) {
+int32_t Vec2i_Distance(Vec2i lhs, Vec2i rhs) {
     Vec2i_SubAssignment(&lhs, &rhs);
     return Vec2i_MagnitudePtr(&lhs);
 }
@@ -501,8 +501,8 @@ Vec2i Vec2i_Inverse(Vec2i lhs) {
 * (Vec2i)lhs = (Vec2f)rhs;
 **/
 void Vec2i_FromVec2fAssignment(Vec2i* lhs, Vec2f* rhs) {
-    lhs->x = (int)(rhs->x);
-    lhs->y = (int)(rhs->y);
+    lhs->x = (int32_t)(rhs->x);
+    lhs->y = (int32_t)(rhs->y);
 }
 
 /**
@@ -510,8 +510,8 @@ void Vec2i_FromVec2fAssignment(Vec2i* lhs, Vec2f* rhs) {
 * (Vec2i)lhs = (Vec2s)rhs;
 **/
 void Vec2i_FromVec2sAssignment(Vec2i* lhs, Vec2s* rhs) {
-    lhs->x = (int)(rhs->x);
-    lhs->y = (int)(rhs->y);
+    lhs->x = (int32_t)(rhs->x);
+    lhs->y = (int32_t)(rhs->y);
 }
 
 /**
@@ -569,19 +569,19 @@ void Vec2s_DivideAssignment(Vec2s* lhs, Vec2s* rhs) {
 }
 
 /**
-* @brief Scales the Vec2s lhs to the short rhs and stores the result in lhs;
-* (Vec2s)lhs *= (short)rhs;
+* @brief Scales the Vec2s lhs to the int16_t rhs and stores the result in lhs;
+* (Vec2s)lhs *= (int16_t)rhs;
 **/
-void Vec2s_MultiplyAssignmentF(Vec2s* lhs, short rhs) {
+void Vec2s_MultiplyAssignmentF(Vec2s* lhs, int16_t rhs) {
     lhs->x *= rhs;
     lhs->y *= rhs;
 }
 
 /**
-* @brief Divides the Vec2s lhs by the short rhs and stores the result in lhs;
-* (Vec2s)lhs *= (short)rhs;
+* @brief Divides the Vec2s lhs by the int16_t rhs and stores the result in lhs;
+* (Vec2s)lhs *= (int16_t)rhs;
 **/
-void Vec2s_DivideAssignmentF(Vec2s* lhs, short rhs) {
+void Vec2s_DivideAssignmentF(Vec2s* lhs, int16_t rhs) {
     lhs->x /= rhs;
     lhs->y /= rhs;
 }
@@ -623,60 +623,60 @@ Vec2s Vec2s_Divide(Vec2s lhs, Vec2s rhs) {
 }
 
 /**
-* @brief Returns the product of the Vec2s lhs scaled to the short rhs as a Vec2s.
-* v = ((Vec2s)lhs *= (short)rhs);
+* @brief Returns the product of the Vec2s lhs scaled to the int16_t rhs as a Vec2s.
+* v = ((Vec2s)lhs *= (int16_t)rhs);
 **/
-Vec2s Vec2s_MultiplyF(Vec2s lhs, short rhs) {
+Vec2s Vec2s_MultiplyF(Vec2s lhs, int16_t rhs) {
     Vec2s_MultiplyAssignmentF(&lhs, rhs);
     return lhs;
 }
 
 /**
-* @brief Returns the quotient of the Vec2s lhs divided by the short rhs as a Vec2s.
-* v = ((Vec2s)lhs *= (short)rhs);
+* @brief Returns the quotient of the Vec2s lhs divided by the int16_t rhs as a Vec2s.
+* v = ((Vec2s)lhs *= (int16_t)rhs);
 **/
-Vec2s Vec2s_DivideF(Vec2s lhs, short rhs) {
+Vec2s Vec2s_DivideF(Vec2s lhs, int16_t rhs) {
     Vec2s_DivideAssignmentF(&lhs, rhs);
     return lhs;
 }
 
 /**
-* @brief Returns the dot product of the Vec2s lhs and the Vec2s rhs as a short.
+* @brief Returns the dot product of the Vec2s lhs and the Vec2s rhs as a int16_t.
 * v = ((Vec2s)lhs • (Vec2s)rhs);
 **/
-short Vec2s_Dot(Vec2s* lhs, Vec2s* rhs) {
+int16_t Vec2s_Dot(Vec2s* lhs, Vec2s* rhs) {
     return (lhs->x * rhs->x) + (lhs->y * rhs->y);
 }
 
 /**
-* @brief Returns the square magnitude of the Vec2s lhs as a short.
+* @brief Returns the square magnitude of the Vec2s lhs as a int16_t.
 * v = ((Vec2s)lhs^2)
 **/
-short Vec2s_SquareMagnitude(Vec2s lhs) {
+int16_t Vec2s_SquareMagnitude(Vec2s lhs) {
     return (lhs.x * lhs.x) + (lhs.y * lhs.y);
 }
 
 /**
-* @brief Returns the magnitude of the Vec2s lhs as a short.
+* @brief Returns the magnitude of the Vec2s lhs as a int16_t.
 * v = √((Vec2s)lhs^2)
 **/
-short Vec2s_Magnitude(Vec2s lhs) {
+int16_t Vec2s_Magnitude(Vec2s lhs) {
     return sqrtf(Vec2s_SquareMagnitude(lhs));
 }
 
 /**
-* @brief Returns the square magnitude of the Vec2s lhs as a short.
+* @brief Returns the square magnitude of the Vec2s lhs as a int16_t.
 * v = ((Vec2s)lhs^2)
 **/
-short Vec2s_SquareMagnitudePtr(Vec2s* lhs) {
+int16_t Vec2s_SquareMagnitudePtr(Vec2s* lhs) {
     return (lhs->x * lhs->x) + (lhs->y * lhs->y);
 }
 
 /**
-* @brief Returns the magnitude of the Vec2s lhs as a short.
+* @brief Returns the magnitude of the Vec2s lhs as a int16_t.
 * v = √((Vec2s)lhs^2)
 **/
-short Vec2s_MagnitudePtr(Vec2s* lhs) {
+int16_t Vec2s_MagnitudePtr(Vec2s* lhs) {
     return sqrtf(Vec2s_SquareMagnitudePtr(lhs));
 }
 
@@ -684,7 +684,7 @@ short Vec2s_MagnitudePtr(Vec2s* lhs) {
 * @brief Normalizes the Vec2s lhs shorto a unit vector.
 **/
 void Vec2s_NormalizeAssignment(Vec2s* lhs) {
-    short magnitude = Vec2s_MagnitudePtr(lhs);
+    int16_t magnitude = Vec2s_MagnitudePtr(lhs);
     if (magnitude == 0) {
         lhs->x = 0;
         lhs->y = 0;
@@ -704,9 +704,9 @@ Vec2s Vec2s_Normalize(Vec2s lhs) {
 }
 
 /**
-* @brief Returns the difference of the magnitudes of the Vec2s lhs subtracted from the Vec2s rhs as a short.
+* @brief Returns the difference of the magnitudes of the Vec2s lhs subtracted from the Vec2s rhs as a int16_t.
 **/
-short Vec2s_Distance(Vec2s lhs, Vec2s rhs) {
+int16_t Vec2s_Distance(Vec2s lhs, Vec2s rhs) {
     Vec2s_SubAssignment(&lhs, &rhs);
     return Vec2s_MagnitudePtr(&lhs);
 }
@@ -731,8 +731,8 @@ Vec2s Vec2s_Inverse(Vec2s lhs) {
 * (Vec2s)lhs = (Vec2f)rhs;
 **/
 void Vec2s_FromVec2fAssignment(Vec2s* lhs, Vec2f* rhs) {
-    lhs->x = (short)(rhs->x);
-    lhs->y = (short)(rhs->y);
+    lhs->x = (int16_t)(rhs->x);
+    lhs->y = (int16_t)(rhs->y);
 }
 
 /**
@@ -740,8 +740,8 @@ void Vec2s_FromVec2fAssignment(Vec2s* lhs, Vec2f* rhs) {
 * (Vec2s)lhs = (Vec2i)rhs;
 **/
 void Vec2s_FromVec2iAssignment(Vec2s* lhs, Vec2i* rhs) {
-    lhs->x = (short)(rhs->x);
-    lhs->y = (short)(rhs->y);
+    lhs->x = (int16_t)(rhs->x);
+    lhs->y = (int16_t)(rhs->y);
 }
 
 /**
@@ -1085,20 +1085,20 @@ void Vec3i_DivideAssignment(Vec3i* lhs, Vec3i* rhs) {
 }
 
 /**
-* @brief Scales the Vec3i lhs to the int rhs and stores the result in lhs;
-* (Vec3i)lhs *= (int)rhs;
+* @brief Scales the Vec3i lhs to the int32_t rhs and stores the result in lhs;
+* (Vec3i)lhs *= (int32_t)rhs;
 **/
-void Vec3i_MultiplyAssignmentF(Vec3i* lhs, int rhs) {
+void Vec3i_MultiplyAssignmentF(Vec3i* lhs, int32_t rhs) {
     lhs->x *= rhs;
     lhs->y *= rhs;
     lhs->z *= rhs;
 }
 
 /**
-* @brief Divides the Vec3i lhs by the int rhs and stores the result in lhs;
-* (Vec3i)lhs *= (int)rhs;
+* @brief Divides the Vec3i lhs by the int32_t rhs and stores the result in lhs;
+* (Vec3i)lhs *= (int32_t)rhs;
 **/
-void Vec3i_DivideAssignmentF(Vec3i* lhs, int rhs) {
+void Vec3i_DivideAssignmentF(Vec3i* lhs, int32_t rhs) {
     lhs->x /= rhs;
     lhs->y /= rhs;
     lhs->z /= rhs;
@@ -1141,28 +1141,28 @@ Vec3i Vec3i_Divide(Vec3i lhs, Vec3i rhs) {
 }
 
 /**
-* @brief Returns the product of the Vec3i lhs scaled to the int rhs as a Vec3i.
-* v = ((Vec3i)lhs *= (int)rhs);
+* @brief Returns the product of the Vec3i lhs scaled to the int32_t rhs as a Vec3i.
+* v = ((Vec3i)lhs *= (int32_t)rhs);
 **/
-Vec3i Vec3i_MultiplyF(Vec3i lhs, int rhs) {
+Vec3i Vec3i_MultiplyF(Vec3i lhs, int32_t rhs) {
     Vec3i_MultiplyAssignmentF(&lhs, rhs);
     return lhs;
 }
 
 /**
-* @brief Returns the quotient of the Vec3i lhs divided by the int rhs as a Vec3i.
-* v = ((Vec3i)lhs *= (int)rhs);
+* @brief Returns the quotient of the Vec3i lhs divided by the int32_t rhs as a Vec3i.
+* v = ((Vec3i)lhs *= (int32_t)rhs);
 **/
-Vec3i Vec3i_DivideF(Vec3i lhs, int rhs) {
+Vec3i Vec3i_DivideF(Vec3i lhs, int32_t rhs) {
     Vec3i_DivideAssignmentF(&lhs, rhs);
     return lhs;
 }
 
 /**
-* @brief Returns the dot product of the Vec3i lhs and the Vec3i rhs as a int.
+* @brief Returns the dot product of the Vec3i lhs and the Vec3i rhs as a int32_t.
 * v = ((Vec3i)lhs • (Vec3i)rhs);
 **/
-int Vec3i_Dot(Vec3i* lhs, Vec3i* rhs) {
+int32_t Vec3i_Dot(Vec3i* lhs, Vec3i* rhs) {
     return (lhs->x * rhs->x) + (lhs->y * rhs->y) + (lhs->z * rhs->z);
 }
 
@@ -1179,34 +1179,34 @@ Vec3i Vec3i_Cross(Vec3i* lhs, Vec3i* rhs) {
 }
 
 /**
-* @brief Returns the square magnitude of the Vec3i lhs as a int.
+* @brief Returns the square magnitude of the Vec3i lhs as a int32_t.
 * v = ((Vec3i)lhs^2)
 **/
-int Vec3i_SquareMagnitude(Vec3i lhs) {
+int32_t Vec3i_SquareMagnitude(Vec3i lhs) {
     return (lhs.x * lhs.x) + (lhs.y * lhs.y) + (lhs.z * lhs.z);
 }
 
 /**
-* @brief Returns the magnitude of the Vec3i lhs as a int.
+* @brief Returns the magnitude of the Vec3i lhs as a int32_t.
 * v = √((Vec3i)lhs^2)
 **/
-int Vec3i_Magnitude(Vec3i lhs) {
+int32_t Vec3i_Magnitude(Vec3i lhs) {
     return sqrtf(Vec3i_SquareMagnitude(lhs));
 }
 
 /**
-* @brief Returns the square magnitude of the Vec3i lhs as a int.
+* @brief Returns the square magnitude of the Vec3i lhs as a int32_t.
 * v = ((Vec3i)lhs^2)
 **/
-int Vec3i_SquareMagnitudePtr(Vec3i* lhs) {
+int32_t Vec3i_SquareMagnitudePtr(Vec3i* lhs) {
     return (lhs->x * lhs->x) + (lhs->y * lhs->y) + (lhs->z * lhs->z);
 }
 
 /**
-* @brief Returns the magnitude of the Vec3i lhs as a int.
+* @brief Returns the magnitude of the Vec3i lhs as a int32_t.
 * v = √((Vec3i)lhs^2)
 **/
-int Vec3i_MagnitudePtr(Vec3i* lhs) {
+int32_t Vec3i_MagnitudePtr(Vec3i* lhs) {
     return sqrtf(Vec3i_SquareMagnitudePtr(lhs));
 }
 
@@ -1214,7 +1214,7 @@ int Vec3i_MagnitudePtr(Vec3i* lhs) {
 * @brief Normalizes the Vec3i lhs into a unit vector.
 **/
 void Vec3i_NormalizeAssignment(Vec3i* lhs) {
-    int magnitude = Vec3i_MagnitudePtr(lhs);
+    int32_t magnitude = Vec3i_MagnitudePtr(lhs);
     if (magnitude == 0) {
         lhs->x = lhs->y = lhs->z = 0;
     }
@@ -1234,9 +1234,9 @@ Vec3i Vec3i_Normalize(Vec3i lhs) {
 }
 
 /**
-* @brief Returns the difference of the magnitudes of the Vec3i lhs subtracted from the Vec3i rhs as a int.
+* @brief Returns the difference of the magnitudes of the Vec3i lhs subtracted from the Vec3i rhs as a int32_t.
 **/
-int Vec3i_Distance(Vec3i lhs, Vec3i rhs) {
+int32_t Vec3i_Distance(Vec3i lhs, Vec3i rhs) {
     Vec3i_SubAssignment(&lhs, &rhs);
     return Vec3i_MagnitudePtr(&lhs);
 }
@@ -1261,9 +1261,9 @@ Vec3i Vec3i_Inverse(Vec3i lhs) {
 * (Vec3i)lhs = (Vec3f)rhs;
 **/
 void Vec3i_FromVec3fAssignment(Vec3i* lhs, Vec3f* rhs) {
-    lhs->x = (int)(rhs->x);
-    lhs->y = (int)(rhs->y);
-    lhs->z = (int)(rhs->z);
+    lhs->x = (int32_t)(rhs->x);
+    lhs->y = (int32_t)(rhs->y);
+    lhs->z = (int32_t)(rhs->z);
 }
 
 /**
@@ -1271,9 +1271,9 @@ void Vec3i_FromVec3fAssignment(Vec3i* lhs, Vec3f* rhs) {
 * (Vec3i)lhs = (Vec3s)rhs;
 **/
 void Vec3i_FromVec3sAssignment(Vec3i* lhs, Vec3s* rhs) {
-    lhs->x = (int)(rhs->x);
-    lhs->y = (int)(rhs->y);
-    lhs->z = (int)(rhs->z);
+    lhs->x = (int32_t)(rhs->x);
+    lhs->y = (int32_t)(rhs->y);
+    lhs->z = (int32_t)(rhs->z);
 }
 
 /**
@@ -1335,20 +1335,20 @@ void Vec3s_DivideAssignment(Vec3s* lhs, Vec3s* rhs) {
 }
 
 /**
-* @brief Scales the Vec3s lhs to the short rhs and stores the result in lhs;
-* (Vec3s)lhs *= (short)rhs;
+* @brief Scales the Vec3s lhs to the int16_t rhs and stores the result in lhs;
+* (Vec3s)lhs *= (int16_t)rhs;
 **/
-void Vec3s_MultiplyAssignmentF(Vec3s* lhs, short rhs) {
+void Vec3s_MultiplyAssignmentF(Vec3s* lhs, int16_t rhs) {
     lhs->x *= rhs;
     lhs->y *= rhs;
     lhs->z *= rhs;
 }
 
 /**
-* @brief Divides the Vec3s lhs by the short rhs and stores the result in lhs;
-* (Vec3s)lhs *= (short)rhs;
+* @brief Divides the Vec3s lhs by the int16_t rhs and stores the result in lhs;
+* (Vec3s)lhs *= (int16_t)rhs;
 **/
-void Vec3s_DivideAssignmentF(Vec3s* lhs, short rhs) {
+void Vec3s_DivideAssignmentF(Vec3s* lhs, int16_t rhs) {
     lhs->x /= rhs;
     lhs->y /= rhs;
     lhs->z /= rhs;
@@ -1391,28 +1391,28 @@ Vec3s Vec3s_Divide(Vec3s lhs, Vec3s rhs) {
 }
 
 /**
-* @brief Returns the product of the Vec3s lhs scaled to the short rhs as a Vec3s.
-* v = ((Vec3s)lhs *= (short)rhs);
+* @brief Returns the product of the Vec3s lhs scaled to the int16_t rhs as a Vec3s.
+* v = ((Vec3s)lhs *= (int16_t)rhs);
 **/
-Vec3s Vec3s_MultiplyF(Vec3s lhs, short rhs) {
+Vec3s Vec3s_MultiplyF(Vec3s lhs, int16_t rhs) {
     Vec3s_MultiplyAssignmentF(&lhs, rhs);
     return lhs;
 }
 
 /**
-* @brief Returns the quotient of the Vec3s lhs divided by the short rhs as a Vec3s.
-* v = ((Vec3s)lhs *= (short)rhs);
+* @brief Returns the quotient of the Vec3s lhs divided by the int16_t rhs as a Vec3s.
+* v = ((Vec3s)lhs *= (int16_t)rhs);
 **/
-Vec3s Vec3s_DivideF(Vec3s lhs, short rhs) {
+Vec3s Vec3s_DivideF(Vec3s lhs, int16_t rhs) {
     Vec3s_DivideAssignmentF(&lhs, rhs);
     return lhs;
 }
 
 /**
-* @brief Returns the dot product of the Vec3s lhs and the Vec3s rhs as a short.
+* @brief Returns the dot product of the Vec3s lhs and the Vec3s rhs as a int16_t.
 * v = ((Vec3s)lhs • (Vec3s)rhs);
 **/
-short Vec3s_Dot(Vec3s* lhs, Vec3s* rhs) {
+int16_t Vec3s_Dot(Vec3s* lhs, Vec3s* rhs) {
     return (lhs->x * rhs->x) + (lhs->y * rhs->y) + (lhs->z * rhs->z);
 }
 
@@ -1429,34 +1429,34 @@ Vec3s Vec3s_Cross(Vec3s* lhs, Vec3s* rhs) {
 }
 
 /**
-* @brief Returns the square magnitude of the Vec3s lhs as a short.
+* @brief Returns the square magnitude of the Vec3s lhs as a int16_t.
 * v = ((Vec3s)lhs^2)
 **/
-short Vec3s_SquareMagnitude(Vec3s lhs) {
+int16_t Vec3s_SquareMagnitude(Vec3s lhs) {
     return (lhs.x * lhs.x) + (lhs.y * lhs.y) + (lhs.z * lhs.z);
 }
 
 /**
-* @brief Returns the magnitude of the Vec3s lhs as a short.
+* @brief Returns the magnitude of the Vec3s lhs as a int16_t.
 * v = √((Vec3s)lhs^2)
 **/
-short Vec3s_Magnitude(Vec3s lhs) {
+int16_t Vec3s_Magnitude(Vec3s lhs) {
     return sqrtf(Vec3s_SquareMagnitude(lhs));
 }
 
 /**
-* @brief Returns the square magnitude of the Vec3s lhs as a short.
+* @brief Returns the square magnitude of the Vec3s lhs as a int16_t.
 * v = ((Vec3s)lhs^2)
 **/
-short Vec3s_SquareMagnitudePtr(Vec3s* lhs) {
+int16_t Vec3s_SquareMagnitudePtr(Vec3s* lhs) {
     return (lhs->x * lhs->x) + (lhs->y * lhs->y) + (lhs->z * lhs->z);
 }
 
 /**
-* @brief Returns the magnitude of the Vec3s lhs as a short.
+* @brief Returns the magnitude of the Vec3s lhs as a int16_t.
 * v = √((Vec3s)lhs^2)
 **/
-short Vec3s_MagnitudePtr(Vec3s* lhs) {
+int16_t Vec3s_MagnitudePtr(Vec3s* lhs) {
     return sqrtf(Vec3s_SquareMagnitudePtr(lhs));
 }
 
@@ -1464,7 +1464,7 @@ short Vec3s_MagnitudePtr(Vec3s* lhs) {
 * @brief Normalizes the Vec3s lhs shorto a unit vector.
 **/
 void Vec3s_NormalizeAssignment(Vec3s* lhs) {
-    short magnitude = Vec3s_MagnitudePtr(lhs);
+    int16_t magnitude = Vec3s_MagnitudePtr(lhs);
     if (magnitude == 0) {
         lhs->x = lhs->y = lhs->z = 0;
     }
@@ -1484,9 +1484,9 @@ Vec3s Vec3s_Normalize(Vec3s lhs) {
 }
 
 /**
-* @brief Returns the difference of the magnitudes of the Vec3s lhs subtracted from the Vec3s rhs as a short.
+* @brief Returns the difference of the magnitudes of the Vec3s lhs subtracted from the Vec3s rhs as a int16_t.
 **/
-short Vec3s_Distance(Vec3s lhs, Vec3s rhs) {
+int16_t Vec3s_Distance(Vec3s lhs, Vec3s rhs) {
     Vec3s_SubAssignment(&lhs, &rhs);
     return Vec3s_MagnitudePtr(&lhs);
 }
@@ -1511,9 +1511,9 @@ Vec3s Vec3s_Inverse(Vec3s lhs) {
 * (Vec3s)lhs = (Vec3f)rhs;
 **/
 void Vec3s_FromVec3fAssignment(Vec3s* lhs, Vec3f* rhs) {
-    lhs->x = (short)(rhs->x);
-    lhs->y = (short)(rhs->y);
-    lhs->z = (short)(rhs->z);
+    lhs->x = (int16_t)(rhs->x);
+    lhs->y = (int16_t)(rhs->y);
+    lhs->z = (int16_t)(rhs->z);
 }
 
 /**
@@ -1521,9 +1521,9 @@ void Vec3s_FromVec3fAssignment(Vec3s* lhs, Vec3f* rhs) {
 * (Vec3s)lhs = (Vec3i)rhs;
 **/
 void Vec3s_FromVec3iAssignment(Vec3s* lhs, Vec3i* rhs) {
-    lhs->x = (short)(rhs->x);
-    lhs->y = (short)(rhs->y);
-    lhs->z = (short)(rhs->z);
+    lhs->x = (int16_t)(rhs->x);
+    lhs->y = (int16_t)(rhs->y);
+    lhs->z = (int16_t)(rhs->z);
 }
 
 /**
@@ -1850,10 +1850,10 @@ void Vec4i_DivideAssignment(Vec4i* lhs, Vec4i* rhs) {
 }
 
 /**
-* @brief Scales the Vec4i lhs to the int rhs and stores the result in lhs;
-* (Vec4i)lhs *= (int)rhs;
+* @brief Scales the Vec4i lhs to the int32_t rhs and stores the result in lhs;
+* (Vec4i)lhs *= (int32_t)rhs;
 **/
-void Vec4i_MultiplyAssignmentF(Vec4i* lhs, int rhs) {
+void Vec4i_MultiplyAssignmentF(Vec4i* lhs, int32_t rhs) {
     lhs->x *= rhs;
     lhs->y *= rhs;
     lhs->z *= rhs;
@@ -1861,10 +1861,10 @@ void Vec4i_MultiplyAssignmentF(Vec4i* lhs, int rhs) {
 }
 
 /**
-* @brief Divides the Vec4i lhs by the int rhs and stores the result in lhs;
-* (Vec4i)lhs *= (int)rhs;
+* @brief Divides the Vec4i lhs by the int32_t rhs and stores the result in lhs;
+* (Vec4i)lhs *= (int32_t)rhs;
 **/
-void Vec4i_DivideAssignmentF(Vec4i* lhs, int rhs) {
+void Vec4i_DivideAssignmentF(Vec4i* lhs, int32_t rhs) {
     lhs->x /= rhs;
     lhs->y /= rhs;
     lhs->z /= rhs;
@@ -1908,28 +1908,28 @@ Vec4i Vec4i_Divide(Vec4i lhs, Vec4i rhs) {
 }
 
 /**
-* @brief Returns the product of the Vec4i lhs scaled to the int rhs as a Vec4i.
-* v = ((Vec4i)lhs *= (int)rhs);
+* @brief Returns the product of the Vec4i lhs scaled to the int32_t rhs as a Vec4i.
+* v = ((Vec4i)lhs *= (int32_t)rhs);
 **/
-Vec4i Vec4i_MultiplyF(Vec4i lhs, int rhs) {
+Vec4i Vec4i_MultiplyF(Vec4i lhs, int32_t rhs) {
     Vec4i_MultiplyAssignmentF(&lhs, rhs);
     return lhs;
 }
 
 /**
-* @brief Returns the quotient of the Vec4i lhs divided by the int rhs as a Vec4i.
-* v = ((Vec4i)lhs *= (int)rhs);
+* @brief Returns the quotient of the Vec4i lhs divided by the int32_t rhs as a Vec4i.
+* v = ((Vec4i)lhs *= (int32_t)rhs);
 **/
-Vec4i Vec4i_DivideF(Vec4i lhs, int rhs) {
+Vec4i Vec4i_DivideF(Vec4i lhs, int32_t rhs) {
     Vec4i_DivideAssignmentF(&lhs, rhs);
     return lhs;
 }
 
 /**
-* @brief Returns the dot product of the Vec4i lhs and the Vec4i rhs as a int.
+* @brief Returns the dot product of the Vec4i lhs and the Vec4i rhs as a int32_t.
 * v = ((Vec4i)lhs • (Vec4i)rhs);
 **/
-int Vec4i_Dot(Vec4i* lhs, Vec4i* rhs) {
+int32_t Vec4i_Dot(Vec4i* lhs, Vec4i* rhs) {
     return (lhs->x * rhs->x) + (lhs->y * rhs->y) + (lhs->z * rhs->z) + (lhs->w * rhs->w);
 }
 
@@ -1947,34 +1947,34 @@ Vec4i Vec4i_Cross(Vec4i* lhs, Vec4i* rhs) {
 }
 
 /**
-* @brief Returns the square magnitude of the Vec4i lhs as a int.
+* @brief Returns the square magnitude of the Vec4i lhs as a int32_t.
 * v = ((Vec4i)lhs^2)
 **/
-int Vec4i_SquareMagnitude(Vec4i lhs) {
+int32_t Vec4i_SquareMagnitude(Vec4i lhs) {
     return (lhs.x * lhs.x) + (lhs.y * lhs.y) + (lhs.z * lhs.z) + (lhs.w * lhs.w);
 }
 
 /**
-* @brief Returns the magnitude of the Vec4i lhs as a int.
+* @brief Returns the magnitude of the Vec4i lhs as a int32_t.
 * v = √((Vec4i)lhs^2)
 **/
-int Vec4i_Magnitude(Vec4i lhs) {
+int32_t Vec4i_Magnitude(Vec4i lhs) {
     return sqrtf(Vec4i_SquareMagnitude(lhs));
 }
 
 /**
-* @brief Returns the square magnitude of the Vec4i lhs as a int.
+* @brief Returns the square magnitude of the Vec4i lhs as a int32_t.
 * v = ((Vec4i)lhs^2)
 **/
-int Vec4i_SquareMagnitudePtr(Vec4i* lhs) {
+int32_t Vec4i_SquareMagnitudePtr(Vec4i* lhs) {
     return (lhs->x * lhs->x) + (lhs->y * lhs->y) + (lhs->z * lhs->z) + (lhs->w * lhs->w);
 }
 
 /**
-* @brief Returns the magnitude of the Vec4i lhs as a int.
+* @brief Returns the magnitude of the Vec4i lhs as a int32_t.
 * v = √((Vec4i)lhs^2)
 **/
-int Vec4i_MagnitudePtr(Vec4i* lhs) {
+int32_t Vec4i_MagnitudePtr(Vec4i* lhs) {
     return sqrtf(Vec4i_SquareMagnitudePtr(lhs));
 }
 
@@ -1982,7 +1982,7 @@ int Vec4i_MagnitudePtr(Vec4i* lhs) {
 * @brief Normalizes the Vec4i lhs into a unit vector.
 **/
 void Vec4i_NormalizeAssignment(Vec4i* lhs) {
-    int magnitude = Vec4i_MagnitudePtr(lhs);
+    int32_t magnitude = Vec4i_MagnitudePtr(lhs);
     if (magnitude == 0) {
         lhs->x = lhs->y = lhs->z = lhs->w = 0;
     }
@@ -2003,9 +2003,9 @@ Vec4i Vec4i_Normalize(Vec4i lhs) {
 }
 
 /**
-* @brief Returns the difference of the magnitudes of the Vec4i lhs subtracted from the Vec4i rhs as a int.
+* @brief Returns the difference of the magnitudes of the Vec4i lhs subtracted from the Vec4i rhs as a int32_t.
 **/
-int Vec4i_Distance(Vec4i lhs, Vec4i rhs) {
+int32_t Vec4i_Distance(Vec4i lhs, Vec4i rhs) {
     Vec4i_SubAssignment(&lhs, &rhs);
     return Vec4i_MagnitudePtr(&lhs);
 }
@@ -2030,10 +2030,10 @@ Vec4i Vec4i_Inverse(Vec4i lhs) {
 * (Vec4i)lhs = (Vec4f)rhs;
 **/
 void Vec4i_FromVec4fAssignment(Vec4i* lhs, Vec4f* rhs) {
-    lhs->x = (int)(rhs->x);
-    lhs->y = (int)(rhs->y);
-    lhs->z = (int)(rhs->z);
-    lhs->w = (int)(rhs->w);
+    lhs->x = (int32_t)(rhs->x);
+    lhs->y = (int32_t)(rhs->y);
+    lhs->z = (int32_t)(rhs->z);
+    lhs->w = (int32_t)(rhs->w);
 }
 
 /**
@@ -2041,10 +2041,10 @@ void Vec4i_FromVec4fAssignment(Vec4i* lhs, Vec4f* rhs) {
 * (Vec4i)lhs = (Vec4s)rhs;
 **/
 void Vec4i_FromVec4sAssignment(Vec4i* lhs, Vec4s* rhs) {
-    lhs->x = (int)(rhs->x);
-    lhs->y = (int)(rhs->y);
-    lhs->z = (int)(rhs->z);
-    lhs->w = (int)(rhs->w);
+    lhs->x = (int32_t)(rhs->x);
+    lhs->y = (int32_t)(rhs->y);
+    lhs->z = (int32_t)(rhs->z);
+    lhs->w = (int32_t)(rhs->w);
 }
 
 /**
@@ -2110,10 +2110,10 @@ void Vec4s_DivideAssignment(Vec4s* lhs, Vec4s* rhs) {
 }
 
 /**
-* @brief Scales the Vec4s lhs to the short rhs and stores the result in lhs;
-* (Vec4s)lhs *= (short)rhs;
+* @brief Scales the Vec4s lhs to the int16_t rhs and stores the result in lhs;
+* (Vec4s)lhs *= (int16_t)rhs;
 **/
-void Vec4s_MultiplyAssignmentF(Vec4s* lhs, short rhs) {
+void Vec4s_MultiplyAssignmentF(Vec4s* lhs, int16_t rhs) {
     lhs->x *= rhs;
     lhs->y *= rhs;
     lhs->z *= rhs;
@@ -2121,10 +2121,10 @@ void Vec4s_MultiplyAssignmentF(Vec4s* lhs, short rhs) {
 }
 
 /**
-* @brief Divides the Vec4s lhs by the short rhs and stores the result in lhs;
-* (Vec4s)lhs *= (short)rhs;
+* @brief Divides the Vec4s lhs by the int16_t rhs and stores the result in lhs;
+* (Vec4s)lhs *= (int16_t)rhs;
 **/
-void Vec4s_DivideAssignmentF(Vec4s* lhs, short rhs) {
+void Vec4s_DivideAssignmentF(Vec4s* lhs, int16_t rhs) {
     lhs->x /= rhs;
     lhs->y /= rhs;
     lhs->z /= rhs;
@@ -2168,28 +2168,28 @@ Vec4s Vec4s_Divide(Vec4s lhs, Vec4s rhs) {
 }
 
 /**
-* @brief Returns the product of the Vec4s lhs scaled to the short rhs as a Vec4s.
-* v = ((Vec4s)lhs *= (short)rhs);
+* @brief Returns the product of the Vec4s lhs scaled to the int16_t rhs as a Vec4s.
+* v = ((Vec4s)lhs *= (int16_t)rhs);
 **/
-Vec4s Vec4s_MultiplyF(Vec4s lhs, short rhs) {
+Vec4s Vec4s_MultiplyF(Vec4s lhs, int16_t rhs) {
     Vec4s_MultiplyAssignmentF(&lhs, rhs);
     return lhs;
 }
 
 /**
-* @brief Returns the quotient of the Vec4s lhs divided by the short rhs as a Vec4s.
-* v = ((Vec4s)lhs *= (short)rhs);
+* @brief Returns the quotient of the Vec4s lhs divided by the int16_t rhs as a Vec4s.
+* v = ((Vec4s)lhs *= (int16_t)rhs);
 **/
-Vec4s Vec4s_DivideF(Vec4s lhs, short rhs) {
+Vec4s Vec4s_DivideF(Vec4s lhs, int16_t rhs) {
     Vec4s_DivideAssignmentF(&lhs, rhs);
     return lhs;
 }
 
 /**
-* @brief Returns the dot product of the Vec4s lhs and the Vec4s rhs as a short.
+* @brief Returns the dot product of the Vec4s lhs and the Vec4s rhs as a int16_t.
 * v = ((Vec4s)lhs • (Vec4s)rhs);
 **/
-short Vec4s_Dot(Vec4s* lhs, Vec4s* rhs) {
+int16_t Vec4s_Dot(Vec4s* lhs, Vec4s* rhs) {
     return (lhs->x * rhs->x) + (lhs->y * rhs->y) + (lhs->z * rhs->z) + (lhs->w * rhs->w);
 }
 
@@ -2207,34 +2207,34 @@ Vec4s Vec4s_Cross(Vec4s* lhs, Vec4s* rhs) {
 }
 
 /**
-* @brief Returns the square magnitude of the Vec4s lhs as a short.
+* @brief Returns the square magnitude of the Vec4s lhs as a int16_t.
 * v = ((Vec4s)lhs^2)
 **/
-short Vec4s_SquareMagnitude(Vec4s lhs) {
+int16_t Vec4s_SquareMagnitude(Vec4s lhs) {
     return (lhs.x * lhs.x) + (lhs.y * lhs.y) + (lhs.z * lhs.z) + (lhs.w * lhs.w);
 }
 
 /**
-* @brief Returns the magnitude of the Vec4s lhs as a short.
+* @brief Returns the magnitude of the Vec4s lhs as a int16_t.
 * v = √((Vec4s)lhs^2)
 **/
-short Vec4s_Magnitude(Vec4s lhs) {
+int16_t Vec4s_Magnitude(Vec4s lhs) {
     return sqrtf(Vec4s_SquareMagnitude(lhs));
 }
 
 /**
-* @brief Returns the square magnitude of the Vec4s lhs as a short.
+* @brief Returns the square magnitude of the Vec4s lhs as a int16_t.
 * v = ((Vec4s)lhs^2)
 **/
-short Vec4s_SquareMagnitudePtr(Vec4s* lhs) {
+int16_t Vec4s_SquareMagnitudePtr(Vec4s* lhs) {
     return (lhs->x * lhs->x) + (lhs->y * lhs->y) + (lhs->z * lhs->z) + (lhs->w * lhs->w);
 }
 
 /**
-* @brief Returns the magnitude of the Vec4s lhs as a short.
+* @brief Returns the magnitude of the Vec4s lhs as a int16_t.
 * v = √((Vec4s)lhs^2)
 **/
-short Vec4s_MagnitudePtr(Vec4s* lhs) {
+int16_t Vec4s_MagnitudePtr(Vec4s* lhs) {
     return sqrtf(Vec4s_SquareMagnitudePtr(lhs));
 }
 
@@ -2242,7 +2242,7 @@ short Vec4s_MagnitudePtr(Vec4s* lhs) {
 * @brief Normalizes the Vec4s lhs shorto a unit vector.
 **/
 void Vec4s_NormalizeAssignment(Vec4s* lhs) {
-    short magnitude = Vec4s_MagnitudePtr(lhs);
+    int16_t magnitude = Vec4s_MagnitudePtr(lhs);
     if (magnitude == 0) {
         lhs->x = lhs->y = lhs->z = lhs->w = 0;
     }
@@ -2263,9 +2263,9 @@ Vec4s Vec4s_Normalize(Vec4s lhs) {
 }
 
 /**
-* @brief Returns the difference of the magnitudes of the Vec4s lhs subtracted from the Vec4s rhs as a short.
+* @brief Returns the difference of the magnitudes of the Vec4s lhs subtracted from the Vec4s rhs as a int16_t.
 **/
-short Vec4s_Distance(Vec4s lhs, Vec4s rhs) {
+int16_t Vec4s_Distance(Vec4s lhs, Vec4s rhs) {
     Vec4s_SubAssignment(&lhs, &rhs);
     return Vec4s_MagnitudePtr(&lhs);
 }
@@ -2290,10 +2290,10 @@ Vec4s Vec4s_Inverse(Vec4s lhs) {
 * (Vec4s)lhs = (Vec4f)rhs;
 **/
 void Vec4s_FromVec4fAssignment(Vec4s* lhs, Vec4f* rhs) {
-    lhs->x = (short)(rhs->x);
-    lhs->y = (short)(rhs->y);
-    lhs->z = (short)(rhs->z);
-    lhs->w = (short)(rhs->w);
+    lhs->x = (int16_t)(rhs->x);
+    lhs->y = (int16_t)(rhs->y);
+    lhs->z = (int16_t)(rhs->z);
+    lhs->w = (int16_t)(rhs->w);
 }
 
 /**
@@ -2301,10 +2301,10 @@ void Vec4s_FromVec4fAssignment(Vec4s* lhs, Vec4f* rhs) {
 * (Vec4s)lhs = (Vec4i)rhs;
 **/
 void Vec4s_FromVec4iAssignment(Vec4s* lhs, Vec4i* rhs) {
-    lhs->x = (short)(rhs->x);
-    lhs->y = (short)(rhs->y);
-    lhs->z = (short)(rhs->z);
-    lhs->w = (short)(rhs->w);
+    lhs->x = (int16_t)(rhs->x);
+    lhs->y = (int16_t)(rhs->y);
+    lhs->z = (int16_t)(rhs->z);
+    lhs->w = (int16_t)(rhs->w);
 }
 
 /**

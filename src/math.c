@@ -44,10 +44,10 @@ float LibAxis_ModF(float x, float y) {
 * 
 * @param base 
 * @param exp exponent
-* @return int 
+* @return int32_t 
 **/
-int LibAxis_PowI(int base, int exp) {
-    int ret = 1;
+int32_t LibAxis_PowI(int32_t base, int32_t exp) {
+    int32_t ret = 1;
 
     while (exp > 0) {
         exp--;

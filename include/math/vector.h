@@ -2,11 +2,11 @@
 #define LIBAXIS_VECTOR_H
 
 typedef struct {
-    short x, y;
+    int16_t x, y;
 } Vec2s;
 
 typedef struct {
-    int x, y;
+    int32_t x, y;
 } Vec2i;
 
 #ifdef __LA_STANDALONE__
@@ -15,11 +15,11 @@ typedef struct {
 } Vec2f;
 
 typedef struct {
-    short x, y, z;
+    int16_t x, y, z;
 } Vec3s;
 
 typedef struct {
-    int x, y, z;
+    int32_t x, y, z;
 } Vec3i;
 
 typedef struct {
@@ -28,11 +28,11 @@ typedef struct {
 #endif
 
 typedef struct {
-    short x, y, z, w;
+    int16_t x, y, z, w;
 } Vec4s;
 
 typedef struct {
-    int x, y, z, w;
+    int32_t x, y, z, w;
 } Vec4i;
 
 typedef struct {
