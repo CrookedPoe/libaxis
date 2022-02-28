@@ -63,3 +63,110 @@ int32_t LibAxis_PowI(int32_t base, int32_t exp) {
     }
     return ret;
 }
+
+/**
+* @brief Raise base to the power of exp (float)
+* 
+* @param base 
+* @param exp exponent
+* @return float 
+**/
+float LibAxis_PowF(float base, int32_t exp) {
+    float ret = 1;
+
+    if (exp == 0)
+        return 1;
+    ret = LibAxis_PowF(base, exp / 2);
+    if (exp % 2 == 0)
+        return ret*ret;
+    else {
+        if (exp > 0)
+            return base * ret * ret;
+        else
+            return (ret * ret) / base;
+    }
+}
+
+/**
+* @brief Return the absolute value of n.
+* 
+* @param n
+* @return int32_t 
+**/
+int32_t LibAxis_Abs(int32_t n) {
+    return (n < 0) ? -n : n;
+}
+
+/**
+* @brief Return the Sine of f;
+* 
+* @param f
+* @return float 
+**/
+float LibAxis_SinF(float f) {
+    return ((float)sin((double)f));
+}
+
+/**
+* @brief Return the Cosine of f;
+* 
+* @param f
+* @return float 
+**/
+float LibAxis_CosF(float f) {
+    return ((float)cos((double)f));
+}
+
+/**
+* @brief Return the Inverse Cosine of f;
+* 
+* @param f
+* @return float 
+**/
+float LibAxis_ArcCosF(float f) {
+    return LibAxis_PowF(LibAxis_CosF((f)), -1);
+}
+
+/**
+* @brief Return the Square Root of n
+* 
+* @param n
+* @return float 
+**/
+float LibAxis_SqrtF(float n) {
+    int s, m, e;
+    s = 0;
+    e = n;
+
+    float sqrt;
+ 
+    while (s <= e) {
+ 
+        m = (s + e) / 2;
+ 
+        if (m * m == n) {
+            sqrt = m;
+            break;
+        }
+ 
+        if (m * m < n) {
+            sqrt=s;
+            s = m + 1;
+        }
+ 
+        else {
+            e = m - 1;
+        }
+    }
+ 
+    float inc = 0.1;
+    for (int i = 0; i < 5; i++) {
+        while (sqrt * sqrt <= n) {
+            sqrt += inc;
+        }
+ 
+        sqrt = sqrt - inc;
+        inc = inc / 10;
+    }
+    return sqrt;
+}
