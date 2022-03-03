@@ -26,11 +26,16 @@ extern float LibAxis_SqrtF(float n);
 /* color.c */
 extern void LibAxis_Color_RGBToHSV(uint8_t r, uint8_t g, uint8_t b, float* h, float* s, float* v);
 extern void LibAxis_Color_HSVToRGB(float h, float s, float v, uint8_t* r, uint8_t* g, uint8_t* b);
-void HsvToRgb(float h, float s, float v, float *r, float *g, float *b);
-void HsvToRgb8(float h, float s, float v, uint8_t *r, uint8_t *g, uint8_t *b);
 extern void LibAxis_Color_CycleHue(float* hue, float speed);
 extern void LibAxis_Color_LerpCosine(float* value, float timer, float min);
 extern Color_RGBA32 LibAxis_Color_LerpRBA32Percent(uint32_t rgba1, uint32_t rgba2, float percent);
+
+/* matrix.c */
+extern void LibAxis_Matrix44_IdentityF(float mf[4][4]);
+extern void LibAxis_Matrix44_TranslateF(float mf[4][4], float x, float y, float z);
+extern void LibAxis_Matrix44_ScaleF(float mf[4][4], float x, float y, float z);
+extern void LibAxis_Matrix44_RotateF(float mf[4][4], float roll, float pitch, float heading);
+extern void LibAxis_Matrix44_MultiplyF(float mf_a[4][4], float mf_b[4][4], float mf[4][4]);
 
 /* vector.c */
 extern void Vec2f_AddAssignment(Vec2f* lhs, Vec2f* rhs);

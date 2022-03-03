@@ -3,9 +3,9 @@ CFLAGS = -nostdlib -fno-builtin -Iinclude -D__LA_STANDALONE__ -Os
 MFLAGS = -nostdlib -fno-builtin -Iinclude -D__LA_STANDALONE__ -Os -mtune=vr4300 -march=vr4300 -mabi=32 -mips3 -mno-memcpy
 
 obj := $(patsubst %.c,%.o,$(wildcard src/*.c))
-obj += $(patsubst %.c,%.o,$(wildcard src/react/*.c))
+obj += $(patsubst %.c,%.o,$(wildcard src/ReactOS/*.c))
 out := $(wildcard src/*.o)
-out += $(wildcard src/react/*.o)
+out += $(wildcard src/ReactOS/*.o)
 
 default: clean
 	@echo "Choose target! (setup, x64 or mips)"
