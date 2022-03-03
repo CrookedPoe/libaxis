@@ -35,5 +35,5 @@ release:
 	@rm -rf build dist
 
 clean:
-	@rm -rf build dist
+	@rm -rf build dist x64 mips
 	@rm src/*.o

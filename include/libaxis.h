@@ -31,6 +31,7 @@ extern void LibAxis_Color_LerpCosine(float* value, float timer, float min);
 extern Color_RGBA32 LibAxis_Color_LerpRBA32Percent(uint32_t rgba1, uint32_t rgba2, float percent);
 
 /* matrix.c */
+extern void LibAxis_Matrix44ToFixed44(Mtx44* m, float mf[4][4]);
 extern void LibAxis_Matrix44_IdentityF(float mf[4][4]);
 extern void LibAxis_Matrix44_TranslateF(float mf[4][4], float x, float y, float z);
 extern void LibAxis_Matrix44_ScaleF(float mf[4][4], float x, float y, float z);

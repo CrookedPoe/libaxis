@@ -7,6 +7,17 @@
 
 #include "../include/libaxis.h"
 
+void LibAxis_Matrix44ToFixed44(Mtx44* m, float mf[4][4]) {
+    Mtx44 matrix = gdSPDefMtx(
+        mf[0][0], mf[0][1], mf[0][2], mf[0][3],
+        mf[1][0], mf[1][1], mf[1][2], mf[1][3],
+        mf[2][0], mf[2][1], mf[2][2], mf[2][3],
+        mf[3][0], mf[3][1], mf[3][2], mf[3][3]
+    );
+
+    *m = matrix;
+}
+
 void LibAxis_Matrix44_IdentityF(float mf[4][4]) {
 	int32_t i, j;
 
